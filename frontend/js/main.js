@@ -3,7 +3,8 @@ const searchInput = document.getElementById('searchQuery');
 const searchBtn = document.getElementById('searchBtn');
 const resultsDiv = document.getElementById('results');
 const sortSelect = document.getElementById('sortSelect');
-const filterButtons = document.querySelectorAll('.filter-btn'); // still keep for any future filters
+const filterButtons = document.querySelectorAll('.filter-btn');
+const shortsButton = document.querySelector('.filter-btn[data-filter="short"]');
 
 /* ------------------ STATE ------------------ */
 let currentQuery = '';
@@ -13,6 +14,7 @@ const pageSize = 9; // videos per page for infinite scroll
 let allResults = [];
 let loading = false;
 let endOfResults = false;
+let showOnlyShorts = false; // false by default, show all videos
 
 /* ------------------ SEARCH ------------------ */
 async function performSearch(reset = true) {
@@ -30,7 +32,6 @@ async function performSearch(reset = true) {
     loading = true;
 
     try {
-        // fetch up to 50 results per search
         const res = await fetch(`/api/search?q=${encodeURIComponent(currentQuery)}&sort=${currentSort}&maxResults=50`);
         const data = await res.json();
 
@@ -65,7 +66,6 @@ function applySort() {
             break;
         case 'relevance':
         default:
-            // do nothing; keep API order
             break;
     }
 }
@@ -75,7 +75,16 @@ function renderResults(reset = false) {
     if (reset) resultsDiv.innerHTML = '';
 
     const startIdx = (currentPage - 1) * pageSize;
-    const pageResults = allResults.slice(startIdx, startIdx + pageSize);
+
+    const filteredResults = allResults.filter(video => {
+    const durationSec = parseISODuration(video.duration);
+    if (showOnlyShorts) {
+        return durationSec < 60; // only include videos < 60s
+    }
+    return true; // show everything if not filtering by shorts
+});
+
+    const pageResults = filteredResults.slice(startIdx, startIdx + pageSize);
 
     if (pageResults.length === 0) {
         endOfResults = true;
@@ -136,7 +145,28 @@ searchBtn.addEventListener('click', () => {
     performSearch(true);
 });
 
-/* ------------------ SORTING ------------------ */
+/* ------------------ SHORTS FILTER ------------------ */
+shortsButton.addEventListener('click', () => {
+    showOnlyShorts = !showOnlyShorts; // toggle state
+
+    // toggle visual style
+    if (showOnlyShorts) {
+        shortsButton.classList.add('active');
+        shortsButton.classList.remove('btn-outline-secondary');
+        shortsButton.classList.add('btn-secondary');
+    } else {
+        shortsButton.classList.remove('active');
+        shortsButton.classList.remove('btn-secondary');
+        shortsButton.classList.add('btn-outline-secondary');
+    }
+
+    currentPage = 1;
+    resultsDiv.innerHTML = '';
+    renderResults(); // rerender filtered results
+});
+
+
+/* ------------------ SORT SELECT ------------------ */
 sortSelect.addEventListener('change', () => {
     currentSort = sortSelect.value;
     applySort();
@@ -151,6 +181,15 @@ function formatDuration(iso) {
     const hours = parseInt(match[1] || 0);
     const minutes = parseInt(match[2] || 0);
     const seconds = parseInt(match[3] || 0);
-    if(hours > 0) return `${hours}h ${minutes}m ${seconds}s`;
+    if (hours > 0) return `${hours}h ${minutes}m ${seconds}s`;
     return `${minutes}m ${seconds}s`;
+}
+
+function parseISODuration(iso) {
+    const match = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+    if (!match) return 0;
+    const hours = parseInt(match[1] || 0);
+    const minutes = parseInt(match[2] || 0);
+    const seconds = parseInt(match[3] || 0);
+    return hours * 3600 + minutes * 60 + seconds;
 }
