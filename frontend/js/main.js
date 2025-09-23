@@ -1,8 +1,12 @@
-document.getElementById('searchBtn').addEventListener('click', async () => {
-    const query = document.getElementById('searchQuery').value.trim();
+const searchInput = document.getElementById('searchQuery');
+const searchBtn = document.getElementById('searchBtn');
+const resultsDiv = document.getElementById('results');
+
+// Main search function
+async function performSearch() {
+    const query = searchInput.value.trim();
     if (!query) return;
 
-    const resultsDiv = document.getElementById('results');
     resultsDiv.innerHTML = '<p>Loading...</p>';
 
     try {
@@ -11,24 +15,36 @@ document.getElementById('searchBtn').addEventListener('click', async () => {
 
         resultsDiv.innerHTML = '';
 
-        if (!data.results || data.results.length === 0) {
+        // Support both old and new API structures
+        const videos = data.results || data.items;
+        if (!videos || videos.length === 0) {
             resultsDiv.innerHTML = '<p>No results found.</p>';
             return;
         }
 
-        data.results.forEach(video => {
+        videos.forEach(video => {
+            // Check if new structure or old
+            const videoId = video.videoId || (video.id && video.id.videoId);
+            const title = video.title || (video.snippet && video.snippet.title);
+            const channel = video.channel || (video.snippet && video.snippet.channelTitle);
+            const thumbnail = video.thumbnail || (video.snippet && video.snippet.thumbnails.medium.url);
+            const views = video.views || 0;
+            const publishedAt = video.published_at || (video.snippet && video.snippet.publishedAt);
+            const duration = video.duration || 'PT0M0S';
+
             const col = document.createElement('div');
             col.className = 'col-md-4';
 
             col.innerHTML = `
                 <div class="card h-100 shadow-sm">
-                    <iframe class="card-img-top" src="https://www.youtube.com/embed/${video.videoId}" frameborder="0" allowfullscreen style="height:200px;"></iframe>
+                    ${videoId ? `<iframe class="card-img-top" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen style="height:200px;"></iframe>` :
+                    `<img src="${thumbnail}" class="card-img-top" alt="${title}">`}
                     <div class="card-body">
-                        <h5 class="card-title">${video.title}</h5>
-                        <p class="metadata mb-1">Channel: ${video.channel}</p>
-                        <p class="metadata mb-1">Views: ${Number(video.views).toLocaleString()} | Published: ${new Date(video.published_at).toLocaleDateString(undefined, {year: 'numeric', month: 'short', day: 'numeric'})}</p>
-                        <p class="metadata mb-2">Duration: ${formatDuration(video.duration)}</p>
-                        <a href="https://www.youtube.com/watch?v=${video.videoId}" target="_blank" class="btn btn-sm btn-primary">Watch</a>
+                        <h5 class="card-title">${title}</h5>
+                        ${channel ? `<p class="metadata mb-1">Channel: ${channel}</p>` : ''}
+                        ${views ? `<p class="metadata mb-1">Views: ${Number(views).toLocaleString()} | Published: ${publishedAt ? new Date(publishedAt).toLocaleDateString(undefined, {year:'numeric', month:'short', day:'numeric'}) : 'N/A'}</p>` : ''}
+                        <p class="metadata mb-2">Duration: ${formatDuration(duration)}</p>
+                        ${videoId ? `<a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" class="btn btn-sm btn-primary">Watch</a>` : ''}
                     </div>
                 </div>
             `;
@@ -38,15 +54,23 @@ document.getElementById('searchBtn').addEventListener('click', async () => {
     } catch (err) {
         resultsDiv.innerHTML = `<p class="text-danger">Error: ${err}</p>`;
     }
+}
+
+// Enter key triggers search
+searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') performSearch();
 });
 
-// Helper function to format ISO 8601 duration to MM:SS or H:M:S
+// Button click triggers search
+searchBtn.addEventListener('click', performSearch);
+
+// Helper function to format ISO 8601 duration
 function formatDuration(iso) {
     const match = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+    if (!match) return '0m 0s';
     const hours = parseInt(match[1] || 0);
     const minutes = parseInt(match[2] || 0);
     const seconds = parseInt(match[3] || 0);
     if(hours > 0) return `${hours}h ${minutes}m ${seconds}s`;
     return `${minutes}m ${seconds}s`;
 }
-
