@@ -1,0 +1,30 @@
+/* Body & container styling */
+body {
+  background-color: #f8f9fa;
+}
+
+/* Card layout */
+.card {
+  margin-bottom: 1rem;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.metadata {
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+/* Hover effect for clickable heading */
+.clickable-title {
+  cursor: pointer;
+  transition: color 0.2s, opacity 0.2s;
+}
+
+.clickable-title:hover {
+  color: #0d6efd; /* Bootstrap primary color */
+  opacity: 0.8;
+}
