@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify, send_from_directory
 import requests
 import os
 from dotenv import load_dotenv
+import isodate  # to parse ISO 8601 durations
 
 load_dotenv()
 
@@ -12,6 +13,14 @@ YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY", "YOUR_API_KEY")
 YOUTUBE_SEARCH_URL = "https://www.googleapis.com/youtube/v3/search"
 
 
+def parse_iso_duration(iso_duration):
+    """Convert ISO 8601 duration to seconds."""
+    try:
+        return int(isodate.parse_duration(iso_duration).total_seconds())
+    except:
+        return 0
+
+
 @app.route("/api/search")
 def search_videos():
     query = request.args.get("q")
@@ -20,6 +29,7 @@ def search_videos():
 
     max_results = min(int(request.args.get("maxResults", 50)), 50)
     order = request.args.get("sort", "relevance")
+    include_shorts = request.args.get("includeShorts", "false").lower() == "true"
 
     results = []
     next_page_token = None
@@ -57,6 +67,11 @@ def search_videos():
             snippet = item["snippet"]
             stats = item.get("statistics", {})
             content = item.get("contentDetails", {})
+
+            duration_sec = parse_iso_duration(content.get("duration", "PT0S"))
+            # Skip shorts if include_shorts is False
+            if not include_shorts and duration_sec < 60:
+                continue
 
             results.append({
                 "title": snippet.get("title"),

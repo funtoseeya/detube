@@ -3,7 +3,6 @@ const searchInput = document.getElementById('searchQuery');
 const searchBtn = document.getElementById('searchBtn');
 const resultsDiv = document.getElementById('results');
 const sortSelect = document.getElementById('sortSelect');
-const filterButtons = document.querySelectorAll('.filter-btn');
 const shortsButton = document.querySelector('.filter-btn[data-filter="short"]');
 
 /* ------------------ STATE ------------------ */
@@ -14,9 +13,12 @@ const pageSize = 9; // videos per page for infinite scroll
 let allResults = [];
 let loading = false;
 let endOfResults = false;
-let showOnlyShorts = false; // false by default, show all videos
 
 /* ------------------ SEARCH ------------------ */
+window.addEventListener('DOMContentLoaded', () => {
+    searchInput.focus();
+});
+
 async function performSearch(reset = true) {
     if (!currentQuery) currentQuery = searchInput.value.trim();
     if (!currentQuery) return;
@@ -32,7 +34,10 @@ async function performSearch(reset = true) {
     loading = true;
 
     try {
-        const res = await fetch(`/api/search?q=${encodeURIComponent(currentQuery)}&sort=${currentSort}&maxResults=50`);
+        // Send server-side parameter for shorts filter
+        const res = await fetch(
+            `/api/search?q=${encodeURIComponent(currentQuery)}&sort=${currentSort}&maxResults=50&includeShorts=${shortsButton.classList.contains('active')}`
+        );
         const data = await res.json();
 
         const newResults = data.results || data.items || [];
@@ -43,30 +48,11 @@ async function performSearch(reset = true) {
         }
 
         allResults = newResults;
-        applySort();
-        renderResults(false);
+        renderResults(true);
     } catch (err) {
         if (reset) resultsDiv.innerHTML = `<p class="text-danger">Error: ${err}</p>`;
     } finally {
         loading = false;
-    }
-}
-
-/* ------------------ SORTING ------------------ */
-function applySort() {
-    switch (currentSort) {
-        case 'views':
-            allResults.sort((a, b) => (b.views || 0) - (a.views || 0));
-            break;
-        case 'date':
-            allResults.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
-            break;
-        case 'title':
-            allResults.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
-            break;
-        case 'relevance':
-        default:
-            break;
     }
 }
 
@@ -75,16 +61,7 @@ function renderResults(reset = false) {
     if (reset) resultsDiv.innerHTML = '';
 
     const startIdx = (currentPage - 1) * pageSize;
-
-    const filteredResults = allResults.filter(video => {
-    const durationSec = parseISODuration(video.duration);
-    if (showOnlyShorts) {
-        return durationSec < 60; // only include videos < 60s
-    }
-    return true; // show everything if not filtering by shorts
-});
-
-    const pageResults = filteredResults.slice(startIdx, startIdx + pageSize);
+    const pageResults = allResults.slice(startIdx, startIdx + pageSize);
 
     if (pageResults.length === 0) {
         endOfResults = true;
@@ -147,31 +124,26 @@ searchBtn.addEventListener('click', () => {
 
 /* ------------------ SHORTS FILTER ------------------ */
 shortsButton.addEventListener('click', () => {
-    showOnlyShorts = !showOnlyShorts; // toggle state
-
     // toggle visual style
-    if (showOnlyShorts) {
-        shortsButton.classList.add('active');
+    const isActive = shortsButton.classList.toggle('active');
+    if (isActive) {
         shortsButton.classList.remove('btn-outline-secondary');
         shortsButton.classList.add('btn-secondary');
     } else {
-        shortsButton.classList.remove('active');
         shortsButton.classList.remove('btn-secondary');
         shortsButton.classList.add('btn-outline-secondary');
     }
 
     currentPage = 1;
     resultsDiv.innerHTML = '';
-    renderResults(); // rerender filtered results
+    performSearch(true); // fetch filtered results from server
 });
-
 
 /* ------------------ SORT SELECT ------------------ */
 sortSelect.addEventListener('change', () => {
     currentSort = sortSelect.value;
-    applySort();
     currentPage = 1;
-    renderResults(true);
+    performSearch(true); // fetch fresh results from server with new sort
 });
 
 /* ------------------ HELPERS ------------------ */
@@ -183,13 +155,4 @@ function formatDuration(iso) {
     const seconds = parseInt(match[3] || 0);
     if (hours > 0) return `${hours}h ${minutes}m ${seconds}s`;
     return `${minutes}m ${seconds}s`;
-}
-
-function parseISODuration(iso) {
-    const match = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
-    if (!match) return 0;
-    const hours = parseInt(match[1] || 0);
-    const minutes = parseInt(match[2] || 0);
-    const seconds = parseInt(match[3] || 0);
-    return hours * 3600 + minutes * 60 + seconds;
 }
