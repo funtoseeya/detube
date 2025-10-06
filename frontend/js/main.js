@@ -23,6 +23,23 @@ window.addEventListener('DOMContentLoaded', () => {
     // focus automatically puts cursor in the search box when page loads
 });
 
+  function resetSearch() { 
+//we run this when the user hits the title. it should clear the search bar and results div
+    const resultsDiv = document.getElementById('results');
+    const searchInput = document.getElementById('searchQuery');
+
+    // Fade out effect
+    resultsDiv.style.transition = 'opacity 0.3s';
+    resultsDiv.style.opacity = '0';
+
+    setTimeout(() => {
+      resultsDiv.innerHTML = '';
+      resultsDiv.style.opacity = '1'; // reset opacity
+      searchInput.value = '';
+    }, 300);
+  }
+
+
 async function performSearch(reset = true) { 
     //what is reset=true? ive never seen that syntax before.
     // ANSWER: This sets a default parameter. If you don’t pass anything when calling the function, reset will be true. 
