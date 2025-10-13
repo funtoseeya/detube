@@ -4,6 +4,7 @@ import os
 from dotenv import load_dotenv
 import isodate  # to parse ISO 8601 durations
 
+
 load_dotenv()
 
 # Serve frontend folder
@@ -12,8 +13,7 @@ app = Flask(__name__, static_folder="../frontend", static_url_path="/")
 YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY", "YOUR_API_KEY")
 YOUTUBE_SEARCH_URL = "https://www.googleapis.com/youtube/v3/search"
 
-
-def parse_iso_duration(iso_duration):
+def parse_iso_duration(iso_duration): #explain this function in detail, incl. syntax
     """Convert ISO 8601 duration to seconds."""
     try:
         return int(isodate.parse_duration(iso_duration).total_seconds())
@@ -21,7 +21,7 @@ def parse_iso_duration(iso_duration):
         return 0
 
 
-@app.route("/api/search")
+@app.route("/api/search") #what is @app.route
 def search_videos():
     query = request.args.get("q")
     if not query:
