@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,54 +9,44 @@
 
 
   <!-- Bootstrap CSS -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  >
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body class="bg-light">
 
   <div class="container">
-<div class="d-flex align-items-center justify-content-center gap-3">
-  <img src="youtube-brainrot.png"
-       alt="Youtube Brainrot"
-       style="width:100px;height:auto;cursor:pointer;"
-       onclick="resetSearch()"
-       role="button"
-       tabindex="0"
-       onkeydown="if(event.key === 'Enter') resetSearch()">
-  <h1 class="mb-0 clickable-title"
-      onclick="resetSearch()"
-      style="cursor:pointer;"
-      role="button"
-      tabindex="0"
-      onkeydown="if(event.key === 'Enter') resetSearch()">DeTube</h1>
-</div>
-<p class="text-center mb-4">Search Youtube without all the distractions and brain rot.</p>
 
+    <!-- Sticky Header -->
+    <div class="sticky-top bg-light py-3" style="z-index: 1020;">
+      <div class="d-flex align-items-center justify-content-center gap-3 mb-3">
+        <img src="youtube-brainrot.png" alt="Youtube Brainrot" style="width:75px;height:auto;cursor:pointer;"
+             onclick="resetSearch()" role="button" tabindex="0" onkeydown="if(event.key === 'Enter') resetSearch()">
 
-    <!-- Search Bar -->
-<div class="input-group mb-3">
-  <input type="text" id="searchQuery" class="form-control" placeholder="Search for videos...">
-  <button class="btn btn-primary" id="searchBtn">Search</button>
-</div>
+        <div class="d-flex flex-column justify-content-center text-start">
+          <h1 class="mb-0 clickable-title" onclick="resetSearch()" style="cursor:pointer;" role="button" tabindex="0"
+              onkeydown="if(event.key === 'Enter') resetSearch()">DeTube</h1>
+          <p class="mb-0">Search Youtube without all the brainrot-causing distractions.</p>
+        </div>
+      </div>
 
-<!-- Sorting and Filters -->
+      <!-- Search Bar -->
+      <div class="input-group mb-3">
+<input type="text" id="searchQuery" class="form-control border-secondary" placeholder="Search for videos..." style="box-shadow: none;">
+        <button class="btn btn-secondary" id="searchBtn">Search</button>
+      </div>
+    </div>
 
-<!-- Results -->
-<div id="results" class="row g-3"></div>
+    <!-- Results -->
+    <div id="results" class="row g-3"></div>
 
-
-
+  </div>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Custom JS -->
   <script src="js/main.js"></script>
- 
-
 
 </body>
 </html>
