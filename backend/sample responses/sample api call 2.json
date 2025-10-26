@@ -1,0 +1,178 @@
+{
+  "kind": "youtube#videoListResponse",
+  "etag": "tbmKcLfjuL1vdm1_7fLtTvQaHYk",
+  "items": [
+    {
+      "kind": "youtube#video",
+      "etag": "Dzowqpeaj_sBzZI5b2ujKKYTBKI",
+      "id": "BS8x2TicxQ8",
+      "snippet": {
+        "publishedAt": "2023-10-11T17:10:01Z",
+        "channelId": "UCBJycsmduvYEL83R_U4JriQ",
+        "title": "Google Pixel 8/8 Pro Review: We'll Fix It In Post!",
+        "description": "Pixel 8 Pro is my new daily driver, but not just because of the hardware...\n\nCan we trust Google on the 7 years of software updates? https://youtu.be/dxVaP0-aFIE?si=g6uGe-6bBJUmQpQ-\n\nMKBHD Merch: http://shop.MKBHD.com\n\nTech I'm using right now: https://www.amazon.com/shop/MKBHD\n\nPlaylist of MKBHD Intro music: https://goo.gl/B3AWV5\n\nPhone provided by Google for review.\n\n~\nhttp://twitter.com/MKBHD\nhttp://instagram.com/MKBHD\nhttp://facebook.com/MKBHD",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/BS8x2TicxQ8/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/BS8x2TicxQ8/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/BS8x2TicxQ8/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/BS8x2TicxQ8/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/BS8x2TicxQ8/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Marques Brownlee",
+        "tags": [
+          "Pixel 8",
+          "Pixel 8 Pro",
+          "Pixel 8 reivew",
+          "Pixel 8 Pro review",
+          "mkbhd",
+          "Google Pixel 8",
+          "Google Pixel 8 Pro",
+          "Pixel 8 Pro vs",
+          "Pixel 8 camera",
+          "Pixel 8 vs",
+          "Pixel 8 Pro camera vs",
+          "display",
+          "actua",
+          "super actua",
+          "reseña del Pixel 8",
+          "reseña del Pixel 8 Pro",
+          "comparación del Pixel 8 Pro",
+          "cámara del Pixel 8",
+          "comparación del Pixel 8",
+          "comparación de la cámara del Pixel 8 Pro",
+          "pantalla"
+        ],
+        "categoryId": "28",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "en",
+        "localized": {
+          "title": "Google Pixel 8/8 Pro Review: We'll Fix It In Post!",
+          "description": "Pixel 8 Pro is my new daily driver, but not just because of the hardware...\n\nCan we trust Google on the 7 years of software updates? https://youtu.be/dxVaP0-aFIE?si=g6uGe-6bBJUmQpQ-\n\nMKBHD Merch: http://shop.MKBHD.com\n\nTech I'm using right now: https://www.amazon.com/shop/MKBHD\n\nPlaylist of MKBHD Intro music: https://goo.gl/B3AWV5\n\nPhone provided by Google for review.\n\n~\nhttp://twitter.com/MKBHD\nhttp://instagram.com/MKBHD\nhttp://facebook.com/MKBHD"
+        },
+        "defaultAudioLanguage": "en"
+      },
+      "contentDetails": {
+        "duration": "PT16M18S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "true",
+        "licensedContent": true,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "statistics": {
+        "viewCount": "5070748",
+        "likeCount": "141961",
+        "favoriteCount": "0",
+        "commentCount": "6124"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "JHxKxuu4mwdZQHLAE1aOPJryvVQ",
+      "id": "gVsrCqcJQ0E",
+      "snippet": {
+        "publishedAt": "2024-02-23T17:04:29Z",
+        "channelId": "UCTzLRZUgelatKZ4nyIKcAbg",
+        "title": "Google Pixel 8 - A Long Term User Review",
+        "description": "The Google Pixel 8 is a small phone and I've been using it for the past 4 months to see how it holds up. In this video, we'll cover performance, cameras, battery life and the software experience after the updates to see if it still remains a viable contender in the smartphone market. \n\nBuy items in this video from Amazon at the links below:\n\nGoogle Pixel 8 - https://geni.us/abVTb\n\nGET MERCH ►https://hwcstore.com\nSUBSCRIBE ►https://bit.ly/SubHWC\n\nTimestamps\n\n0:00 - Some Context\n1:11 - Design Improvements over the Pixel 7\n2:23 - 120Hz Display ain’t 120Hz\n3:49 - The Problem with Android*\n4:46 - Tensor G3 is lacking something…\n6:15 - But wait….there’s good news!\n7:12 - Cameras\n11:01 - Software powered by AI\n13:59 - Conclusion\n\nReview unit provided free of charge by Google. As per Hardware Canucks guidelines, no review direction was received from manufacturer. As an Amazon Associate we earn from qualifying purchases. \n\nFollow us for more updates!\nTwitter https://bit.ly/HWC_Twitter\nFaceBook https://bit.ly/HWC_Facebook\nInstagram https://bit.ly/HWC_Instagram\n----------------------------------------\u00ad------------------------\n\n#pixel8",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/gVsrCqcJQ0E/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/gVsrCqcJQ0E/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/gVsrCqcJQ0E/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/gVsrCqcJQ0E/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/gVsrCqcJQ0E/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Hardware Canucks",
+        "tags": [
+          "pixel 8 camera test",
+          "pixel 8 vs nothing phone 2",
+          "pixel 8 long term review",
+          "pixel 8 battery test",
+          "pixel 8 gaming",
+          "pixel 8 battery",
+          "pixel 8 camera review",
+          "pixel 8 vs iphone 15 pro",
+          "android",
+          "google pixel 8",
+          "pixel 8 review",
+          "pixel 8",
+          "pixel 8 camera",
+          "google pixel 8 review",
+          "pixel 8 vs pixel 7",
+          "pixel 8 vs",
+          "google pixel 8 camera",
+          "hardware canucks",
+          "hardwarecanucks"
+        ],
+        "categoryId": "28",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "en",
+        "localized": {
+          "title": "Google Pixel 8 - A Long Term User Review",
+          "description": "The Google Pixel 8 is a small phone and I've been using it for the past 4 months to see how it holds up. In this video, we'll cover performance, cameras, battery life and the software experience after the updates to see if it still remains a viable contender in the smartphone market. \n\nBuy items in this video from Amazon at the links below:\n\nGoogle Pixel 8 - https://geni.us/abVTb\n\nGET MERCH ►https://hwcstore.com\nSUBSCRIBE ►https://bit.ly/SubHWC\n\nTimestamps\n\n0:00 - Some Context\n1:11 - Design Improvements over the Pixel 7\n2:23 - 120Hz Display ain’t 120Hz\n3:49 - The Problem with Android*\n4:46 - Tensor G3 is lacking something…\n6:15 - But wait….there’s good news!\n7:12 - Cameras\n11:01 - Software powered by AI\n13:59 - Conclusion\n\nReview unit provided free of charge by Google. As per Hardware Canucks guidelines, no review direction was received from manufacturer. As an Amazon Associate we earn from qualifying purchases. \n\nFollow us for more updates!\nTwitter https://bit.ly/HWC_Twitter\nFaceBook https://bit.ly/HWC_Facebook\nInstagram https://bit.ly/HWC_Instagram\n----------------------------------------\u00ad------------------------\n\n#pixel8"
+        },
+        "defaultAudioLanguage": "en"
+      },
+      "contentDetails": {
+        "duration": "PT15M",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": true,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "statistics": {
+        "viewCount": "713786",
+        "likeCount": "13894",
+        "favoriteCount": "0",
+        "commentCount": "853"
+      }
+    }
+  ],
+  "pageInfo": {
+    "totalResults": 2,
+    "resultsPerPage": 2
+  }
+}

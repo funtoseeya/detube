@@ -1,0 +1,182 @@
+{
+  "kind": "youtube#searchListResponse",
+  "etag": "tq90p_ffnbu1RVaognGjSK2eKrE",
+  "nextPageToken": "CAUQAA",
+  "regionCode": "CA",
+  "pageInfo": {
+    "totalResults": 1000000,
+    "resultsPerPage": 5
+  },
+  "items": [
+    {
+      "kind": "youtube#searchResult",
+      "etag": "s7MkV0QJmXsPCPKxYSxZzzmjElo",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "BS8x2TicxQ8"
+      },
+      "snippet": {
+        "publishedAt": "2023-10-11T17:10:01Z",
+        "channelId": "UCBJycsmduvYEL83R_U4JriQ",
+        "title": "Google Pixel 8/8 Pro Review: We&#39;ll Fix It In Post!",
+        "description": "Pixel 8 Pro is my new daily driver, but not just because of the hardware... Can we trust Google on the 7 years of software updates?",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/BS8x2TicxQ8/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/BS8x2TicxQ8/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/BS8x2TicxQ8/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Marques Brownlee",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-10-11T17:10:01Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "JCbImeXbJMeSXkwYr2VHlM_BgD4",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "gVsrCqcJQ0E"
+      },
+      "snippet": {
+        "publishedAt": "2024-02-23T17:04:29Z",
+        "channelId": "UCTzLRZUgelatKZ4nyIKcAbg",
+        "title": "Google Pixel 8 - A Long Term User Review",
+        "description": "The Google Pixel 8 is a small phone and I've been using it for the past 4 months to see how it holds up. In this video, we'll cover ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/gVsrCqcJQ0E/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/gVsrCqcJQ0E/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/gVsrCqcJQ0E/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Hardware Canucks",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-02-23T17:04:29Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "O43Rvio59j7E8UMfxZCM1xyhc7s",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "YzIbLQ0KcPo"
+      },
+      "snippet": {
+        "publishedAt": "2023-10-26T14:07:29Z",
+        "channelId": "UCbLq9tsbo8peV22VxbDAfXA",
+        "title": "Google Pixel 8 review",
+        "description": "The Pixel 8 is now lighter and more compact, yet it comes with an incredibly bright 120Hz display. A larger battery, faster charger ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/YzIbLQ0KcPo/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/YzIbLQ0KcPo/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/YzIbLQ0KcPo/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "GSMArena Official",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-10-26T14:07:29Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "2z7NL1aBxYEgM89k9Bi92gzKa-w",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "EZhJ_VJYjcw"
+      },
+      "snippet": {
+        "publishedAt": "2024-04-09T07:03:13Z",
+        "channelId": "UC72g7lX5O2o91CSohn1Kf5g",
+        "title": "Google Pixel 8 - Long Term, REAL WORLD Review!",
+        "description": "I bought the Pixel 8 on day one, and have now been using it for over 6 months! In this video, I cover any issues I've had (including ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/EZhJ_VJYjcw/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/EZhJ_VJYjcw/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/EZhJ_VJYjcw/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Arran Brown",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-04-09T07:03:13Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "T7XyWwKl15C_T7Zpa9ffDM-XaMo",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "lzHIR01HoG4"
+      },
+      "snippet": {
+        "publishedAt": "2024-02-09T18:42:08Z",
+        "channelId": "UCcdoCX9WJZZrhXHmpvhgc7A",
+        "title": "S24 vs. Pixel 8 vs. iPhone 15: Which Should You Buy?",
+        "description": "Check out the Opal Tadpole here: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/lzHIR01HoG4/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/lzHIR01HoG4/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/lzHIR01HoG4/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Mark Spurrell",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-02-09T18:42:08Z"
+      }
+    }
+  ]
+}
