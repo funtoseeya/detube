@@ -210,8 +210,7 @@ setTimeout(() => {
         }
     });
 
-    // Scroll to top (useful on mobile)
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+ 
 }
 
 
