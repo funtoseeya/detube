@@ -18,13 +18,52 @@ body {
   color: #6c757d;
 }
 
-/* Hover effect for clickable heading */
-.clickable-title {
-  cursor: pointer;
-  transition: color 0.2s, opacity 0.2s;
+.card.clickable {
+    cursor: pointer; /* show pointer */
+    transition: box-shadow 0.2s; /* smooth shadow transition */
 }
 
-.clickable-title:hover {
-  color: #0d6efd; /* Bootstrap primary color */
-  opacity: 0.8;
+.card.clickable:hover {
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.3) !important; /* shadow on all sides */
+}
+
+
+/* Buttons in the video controls row */
+.video-controls {
+    font-size: 0.9rem;
+}
+/* ------------------ Video control buttons ------------------ */
+.btn-control {
+    background: none;
+    border: none;
+    color: #666; /* default grey */
+    cursor: pointer;
+    padding: 0.25rem 0rem;
+    font-size: 1.3rem;
+    transition: color 0.2s, transform 0.1s, background 0.1s;
+    border-radius: 4px; /* subtle rounding for touch targets */
+}
+
+/* Desktop hover effect */
+.btn-control:hover {
+    color: darkblue; /* dark grey on hover */
+    text-decoration: underline;
+
+}
+
+/* Mobile tap / active feedback */
+.btn-control:active {
+    color: #333;
+    background-color: rgba(0,0,0,0.05); /* very light grey highlight */
+    transform: scale(0.95); /* slight press effect */
+}
+
+/* Previous / Next buttons slightly larger and spaced */
+#prevBtn, #nextBtn {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+    
+}
+#prevBtn:hover ,#nextBtn:hover {
+text-decoration: none;
 }
