@@ -60,7 +60,6 @@ body {
 .initial-search {
   max-width: 75%;
   
-  
 }
 
 /* Full-width layout after first search */
@@ -72,3 +71,12 @@ body {
   transform: none;
 }
 
+@media (max-width: 768px) {
+  #embeded-video-container {
+    width: 100% !important;
+  }
+
+  .initial-search {
+    max-width: 100% !important;
+  }
+}

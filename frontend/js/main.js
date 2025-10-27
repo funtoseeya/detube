@@ -183,7 +183,7 @@ function showVideoPlayer(video) {
     </div>
 
 <div class="d-flex justify-content-center mt-3">
-  <div class="ratio ratio-16x9" style="width: 70%; max-width: 800px;">
+  <div id="embeded-video-container" class="ratio ratio-16x9" style="width: 70%;">
     <iframe 
       src="https://www.youtube.com/embed/${videoId}" 
       frameborder="0" 
