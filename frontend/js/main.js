@@ -34,6 +34,10 @@ function resetSearch() {
     else{
         initialContainer.classList.add('initial-center');
     }
+
+    const searchContainer = document.getElementById('searchContainer');
+  searchContainer.classList.remove('full-search');
+  searchContainer.classList.add('initial-search');
     }, 300);
 
     
@@ -41,18 +45,23 @@ function resetSearch() {
 
 }
 
-
-
 async function performSearch(reset = true) {
     const initialContainer = document.getElementById('initial-container');
+    const searchContainer = document.getElementById('searchContainer');
 
-    // Animate moving upward (only once)
+    // Animate upward and expand width simultaneously (only on first search)
     if (initialContainer && initialContainer.classList.contains('initial-center')) {
-        // Wait a tiny bit to allow rendering before removing class
-        setTimeout(() => {
-            initialContainer.classList.remove('initial-center');
-        }, 100); // 100ms feels smooth but you can tweak
+        if (searchContainer && searchContainer.classList.contains('initial-search')) {
+            // Trigger both transitions in the same frame
+            searchContainer.classList.remove('initial-search');
+            searchContainer.classList.add('full-search');
+        }
+
+        // Remove the centering class at the same time
+        initialContainer.classList.remove('initial-center');
     }
+
+
 
     // ---- Your normal search logic below ----
     if (!currentQuery) currentQuery = searchInput.value.trim();
@@ -173,7 +182,7 @@ function showVideoPlayer(video) {
         <p class="metadata mb-1">Views: ${Number(views).toLocaleString()} | Published: ${new Date(publishedAt).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}</p>
     </div>
 
-<div class="d-flex justify-content-center my-3">
+<div class="d-flex justify-content-center mt-3">
   <div class="ratio ratio-16x9" style="width: 70%; max-width: 800px;">
     <iframe 
       src="https://www.youtube.com/embed/${videoId}" 

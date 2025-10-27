@@ -31,13 +31,17 @@
         </div>
       </div>
 
-      <!-- Search Bar -->
-      <div class="input-group mb-3">
-        <input type="text" id="searchQuery" class="form-control border-secondary" placeholder="Search for videos..."
-          style="box-shadow: none;">
-        <button class="btn btn-secondary" id="searchBtn">Search</button>
-      </div>
-    </div>
+     <!-- Search Bar -->
+<div id="searchContainer" class="input-group mb-3 transition-width initial-search">
+  <input
+    type="text"
+    id="searchQuery"
+    class="form-control border-secondary"
+    placeholder="Search for videos..."
+    style="box-shadow: none;"
+  >
+  <button class="btn btn-secondary" id="searchBtn">Search</button>
+</div>
 
     <!-- Results -->
     <div id="results" class="row g-3"></div>
