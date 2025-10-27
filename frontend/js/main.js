@@ -22,15 +22,39 @@ window.addEventListener('DOMContentLoaded', () => {
 function resetSearch() {
     resultsDiv.style.transition = 'opacity 0.3s';
     resultsDiv.style.opacity = '0';
-
+    
     setTimeout(() => {
         resultsDiv.innerHTML = '';
         resultsDiv.style.opacity = '1';
         searchInput.value = '';
+
+        const initialContainer = document.getElementById('initial-container');
+    if (initialContainer && initialContainer.classList.contains('initial-center')) {
+    }
+    else{
+        initialContainer.classList.add('initial-center');
+    }
     }, 300);
+
+    
+
+
 }
 
+
+
 async function performSearch(reset = true) {
+    const initialContainer = document.getElementById('initial-container');
+
+    // Animate moving upward (only once)
+    if (initialContainer && initialContainer.classList.contains('initial-center')) {
+        // Wait a tiny bit to allow rendering before removing class
+        setTimeout(() => {
+            initialContainer.classList.remove('initial-center');
+        }, 100); // 100ms feels smooth but you can tweak
+    }
+
+    // ---- Your normal search logic below ----
     if (!currentQuery) currentQuery = searchInput.value.trim();
     if (!currentQuery) return;
 
@@ -53,13 +77,11 @@ async function performSearch(reset = true) {
             return;
         }
 
-
         renderResults(newResults, reset);
-        currentVideos = newResults;  // store current results
-        currentIndex = 0;            // reset to first video
-
+        currentVideos = newResults;
+        currentIndex = 0;
     } catch (err) {
-resultsDiv.innerHTML = `<p class="text-danger">Error: ${err.message || err}</p>`;
+        resultsDiv.innerHTML = `<p class="text-danger">Error: ${err.message || err}</p>`;
     } finally {
         loading = false;
     }
@@ -82,25 +104,25 @@ function renderResults(videos, reset = false) {
         const views = video.views;
         const publishedAt = video.published_at;
         const duration = video.duration || 'PT0M0S';
-col.innerHTML = `
+        col.innerHTML = `
     <div class="card h-100 shadow-sm clickable">
         <img src="${thumbnail}" class="card-img-top" alt="${title}">
         <div class="card-body">
             <h5 class="card-title mb-1">${title}</h5>
             <p class="metadata mb-1">Channel: ${channel}</p>
-            <p class="metadata mb-1">Views: ${Number(views).toLocaleString()} | Published: ${publishedAt ? new Date(publishedAt).toLocaleDateString(undefined, {year:'numeric', month:'short', day:'numeric'}) : 'N/A'}</p>
+            <p class="metadata mb-1">Views: ${Number(views).toLocaleString()} | Published: ${publishedAt ? new Date(publishedAt).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) : 'N/A'}</p>
             <p class="metadata mb-2">Duration: ${duration || 'PT0M0S'}</p>
         </div>
     </div>
 `;
 
-resultsDiv.appendChild(col);
+        resultsDiv.appendChild(col);
 
-// Make the whole card clickable
-const cardEl = col.querySelector('.card.clickable');
-if (cardEl) {
-    cardEl.addEventListener('click', () => showVideoPlayer(video));
-}
+        // Make the whole card clickable
+        const cardEl = col.querySelector('.card.clickable');
+        if (cardEl) {
+            cardEl.addEventListener('click', () => showVideoPlayer(video));
+        }
 
 
     });
@@ -137,7 +159,7 @@ function showVideoPlayer(video) {
     <div class="mb-2">
         <h5>${title}</h5>
         <p class="metadata mb-1">Channel: ${channel}</p>
-        <p class="metadata mb-1">Views: ${Number(views).toLocaleString()} | Published: ${new Date(publishedAt).toLocaleDateString(undefined, {year:'numeric', month:'short', day:'numeric'})}</p>
+        <p class="metadata mb-1">Views: ${Number(views).toLocaleString()} | Published: ${new Date(publishedAt).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}</p>
     </div>
 
     <div class="ratio ratio-16x9">
@@ -145,10 +167,8 @@ function showVideoPlayer(video) {
     </div>
 `;
 
-    // ✅ Append to DOM first
     resultsDiv.appendChild(playerContainer);
 
-    // ✅ Then attach event listeners
     document.getElementById('backBtn').addEventListener('click', () => {
         renderResults(currentVideos, true);
         window.scrollTo({ top: 0, behavior: 'smooth' });

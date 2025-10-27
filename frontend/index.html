@@ -16,24 +16,25 @@
 
 <body class="bg-light">
 
-  <div class="container">
+  <div id="initial-container" class="container initial-center">
 
     <!-- Sticky Header -->
     <div class="sticky-top bg-light py-3" style="z-index: 1020;">
       <div class="d-flex align-items-center justify-content-center gap-3 mb-3">
-        <img src="youtube-refresh.PNG" alt="Youtube Brainrot" style="width:75px;height:auto;cursor:pointer;"
-             onclick="resetSearch()" role="button" tabindex="0" onkeydown="if(event.key === 'Enter') resetSearch()">
+        <img src="youtube-refresh.PNG" alt="Youtube detox" style="width:75px;height:auto;cursor:pointer;"
+          onclick="resetSearch()" role="button" tabindex="0" onkeydown="if(event.key === 'Enter') resetSearch()">
 
         <div class="d-flex flex-column justify-content-center text-start">
           <h1 class="mb-0 clickable-title" onclick="resetSearch()" style="cursor:pointer;" role="button" tabindex="0"
-              onkeydown="if(event.key === 'Enter') resetSearch()">DeTube</h1>
-          <p class="mb-0">YouTube, minus the clutter</p>
+            onkeydown="if(event.key === 'Enter') resetSearch()">DeTube</h1>
+          <p class="mb-0">YouTube, minus the clutter.</p>
         </div>
       </div>
 
       <!-- Search Bar -->
       <div class="input-group mb-3">
-<input type="text" id="searchQuery" class="form-control border-secondary" placeholder="Search for videos..." style="box-shadow: none;">
+        <input type="text" id="searchQuery" class="form-control border-secondary" placeholder="Search for videos..."
+          style="box-shadow: none;">
         <button class="btn btn-secondary" id="searchBtn">Search</button>
       </div>
     </div>
@@ -49,4 +50,5 @@
   <script src="js/main.js"></script>
 
 </body>
+
 </html>

@@ -28,3 +28,19 @@ body {
 }
 
 
+.initial-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* align sticky header from top */
+    height: 100vh;
+    padding-top: 25vh; /* push header down to ~50% viewport */
+    box-sizing: border-box;
+    transition: padding 0.3s;
+}
+
+/* Smooth transition for the initial container position */
+#initial-container {
+  transition: padding 0.6s ease, margin 0.6s ease;
+}
+
+
