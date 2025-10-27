@@ -89,6 +89,12 @@ async function performSearch(reset = true) {
 
 /* ------------------ RENDERING ------------------ */
 function renderResults(videos, reset = false) {
+ const stickyContainer = document.getElementById('sticky-container');
+    if (stickyContainer && !stickyContainer.classList.contains('sticky-top')) {
+        stickyContainer.classList.add('sticky-top');
+    }
+
+
     if (reset) resultsDiv.innerHTML = '';
 
     videos.forEach(video => {
@@ -111,7 +117,7 @@ function renderResults(videos, reset = false) {
             <h5 class="card-title mb-1">${title}</h5>
             <p class="metadata mb-1">Channel: ${channel}</p>
             <p class="metadata mb-1">Views: ${Number(views).toLocaleString()} | Published: ${publishedAt ? new Date(publishedAt).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) : 'N/A'}</p>
-            <p class="metadata mb-2">Duration: ${duration || 'PT0M0S'}</p>
+<p class="metadata mb-2">Duration: ${formatDuration(duration)}</p>
         </div>
     </div>
 `;
@@ -131,6 +137,11 @@ function renderResults(videos, reset = false) {
 function showVideoPlayer(video) {
     // Clear the current results
     resultsDiv.innerHTML = '';
+
+    const stickyContainer = document.getElementById('sticky-container');
+    if (stickyContainer && stickyContainer.classList.contains('sticky-top')) {
+        stickyContainer.classList.remove('sticky-top');
+    }
 
     // Create container for the video player and metadata
     const playerContainer = document.createElement('div');
@@ -162,12 +173,23 @@ function showVideoPlayer(video) {
         <p class="metadata mb-1">Views: ${Number(views).toLocaleString()} | Published: ${new Date(publishedAt).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}</p>
     </div>
 
-    <div class="ratio ratio-16x9">
-        <iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
-    </div>
+<div class="d-flex justify-content-center my-3">
+  <div class="ratio ratio-16x9" style="width: 70%; max-width: 800px;">
+    <iframe 
+      src="https://www.youtube.com/embed/${videoId}" 
+      frameborder="0" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
 `;
 
     resultsDiv.appendChild(playerContainer);
+// Smooth scroll to bottom after video loads
+setTimeout(() => {
+  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+}, 300);
 
     document.getElementById('backBtn').addEventListener('click', () => {
         renderResults(currentVideos, true);
