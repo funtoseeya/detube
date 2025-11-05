@@ -3,3 +3,8 @@
 
 # Ignore Python bytecode caches
 __pycache__/
+# Ignore environment variables and secrets
+backend/.env
+
+# Ignore Python bytecode caches
+backend/__pycache__/
